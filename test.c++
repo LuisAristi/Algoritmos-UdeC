@@ -11,8 +11,9 @@ float cuota_inicial, cuota_mensual, precio, ingresos;
 int main()
 {
     cout<<"Bienvenid@ a MY HOME"<<endl<<endl;
-    system("read");
-    system("clear");
+    cout<<"presione enter para continuar"<<endl;
+    cin.get();
+    cout << "\x1B[2J\x1B[H";
     cout<<"ingrese su dni ";
     getline(cin, dni);
     cout<<endl<<"ingrese su nombre ";
