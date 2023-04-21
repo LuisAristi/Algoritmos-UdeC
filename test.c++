@@ -49,39 +49,52 @@ int main()
 	cout<<"Por ejemplo, si desea una casa de 1 piso colindante con acabados sencillos digite el número 12" <<endl <<endl;
 	cout<<"Elija el tipo de vivienda de su preferencia: ";
 	cin>>tipo_vivienda;
-	     if(tipo_vivienda<=11 or tipo_vivienda>=43){
-	     	cout<<"ERROR, Escriba un digito valido para seleccionar la vivienda";
-             }
-  
-        else if((tipo_vivienda>=14 and tipo_vivienda <=20) or (tipo_vivienda>=24 and tipo_vivienda <=30) or (tipo_vivienda>=34 and tipo_vivienda <=40))	
-             cout<<"ERROR, Escriba un digito valido para seleccionar la vivienda";
-             
-        else{
-        switch (tipo_vivienda){
+
+	switch (tipo_vivienda){
          case 11:
-		 
+        cout<<"Eligio casa (tipo)";
+		 break;
 		 case 12:
-		 
+		cout<<"Eligio casa (tipo)";
+		 break;
 		 case 13:
-		 
+		cout<<"Eligio casa (tipo)" ;	
+		 break;
 		 case 21:
-		 
+		cout<<"Eligio casa (tipo)" ;	
+		 break;
 		 case 22:
-		 
+		cout<<"Eligio casa (tipo)" ;	
+		 break; 
 		 case 23:
-		 
+		cout<<"Eligio casa (tipo)";
+		 break;
 		 case 31:	
-		 
+		 cout<<"Eligio casa (tipo)";
+		 break;
 		 case 32:	
-		 
+		 cout<<"Eligio casa (tipo)";
+		 break;
 		 case 33:
+		cout<<"Eligio casa (tipo)";
+		 break;
 		 
 		 case 41:
+		cout<<"Eligio casa (tipo)";
+		 break;
 		 
 		 case 42:
+		cout<<"Eligio casa (tipo)";
+		 break;
 		 
-		 case 43:				
+		 case 43:
+		cout<<"Eligio casa (tipo)" ;	
+		 break;
+		 
+		 default:
+		 cout<<"ERROR, Escriba un digito valido para seleccionar la vivienda";				
         	
 		}	
-        	
-		}
+
+    return 0;
+}
