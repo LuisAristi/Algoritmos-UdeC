@@ -184,6 +184,7 @@ int main()
                 break;
             case 2:
                 precio_final = precio*1.10;
+		break;
             default:
                 break;
             }
