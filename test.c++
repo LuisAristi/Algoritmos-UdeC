@@ -11,15 +11,15 @@ using namespace std;
 //variable caso, es para saber con que detalles el cliente eligio la casa
 
 float precio_final;
-int estrato, plazo, casa, tipo, precio, jardin, piscina, parqueadero, dni;
+int estrato, plazo, casa, tipo, precio, jardin, piscina, parqueadero, dni, financiacion;
 string nombre;
-float cuota_inicial, cuota_mensual, ingresos, descuento;
+float saldo, cuota_inicial, cuota_mensual, ingresos, descuento = 0;
 
 int main(){
 	system( "Title Programa de Gestion de ventas MY HOME" ); 
 	setlocale(LC_ALL, "spanish");
 	system("Color f0");
-	cout<<"                                                                                          " <<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+	cout<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
     cout<<"                                             Bienvenid@ a MY HOME                         "<<endl<<endl;
     cout<<"                                   Presione la tecla Enter para continuar                 "<<endl;
     cin.get();
@@ -173,7 +173,7 @@ int main(){
         exit(0);
         break;
     }
-    sleep(2);
+    sleep(3);
     cout << "\x1B[2J\x1B[H" <<endl;
     
     if(casa == 3 || casa == 4 ){
@@ -207,8 +207,7 @@ int main(){
             sleep(1);
             exit(0);
         }
-     cout << "\x1B[2J\x1B[H" <<endl;
-	  if(casa == 3 || casa == 4 ){
+        cout << "\x1B[2J\x1B[H" <<endl;
         cout<<"+-------------------------------------------------+"<<endl;
         cout<<"|      Opción        |     Suma al precio total   |"<<endl;
         cout<<"--------------------------------------------------+ "<<endl;
@@ -222,24 +221,25 @@ int main(){
         cout<<"¿Desea tener vista a la piscina (1 o 2)?"<<endl;
         cin>>piscina;   
         
-              if (piscina == 1 || piscina == 2 ){
+        if (piscina == 1 || piscina == 2 ){
             switch (piscina){
-            case 1:
-                precio_final += precio*1.05;
-                break;
-            case 2:
-            precio_final += 0;
-                break;
-            default:
-                break;
+                case 1:
+                    precio_final += precio*0.05;
+                    break;
+                case 2:
+                    precio_final += 0;
+                    break;
+                default:
+                    break;
+                    }
             }
-        }
         else{
             cout<<"incorrecto, digite una opcion correcta";
             sleep(1);
             exit(0);
         }
       cout << "\x1B[2J\x1B[H" <<endl;
+      cout<<precio_final;
       sleep (1);
     }
  
@@ -265,31 +265,53 @@ int main(){
         
         case 2:
 		precio_final += 6000000;
+        cuota_inicial = precio_final*0.3;
+        descuento = cuota_inicial*0.1;
         break;
 		}   
+
 	cuota_inicial = precio_final*0.3;	
-		 
-    if(parqueadero == 2){
-    descuento = cuota_inicial*0.1;
-	}
-    else{
-    descuento = 0;	
-	}
-	
-	cuota_inicial = cuota_inicial-descuento;
-	
+	saldo = precio_final - cuota_inicial;
+    cuota_inicial = cuota_inicial-descuento;
 
 
+    cout<<"financiacion";
+    cout<<"+---------------------+----------------------------+"<<endl;
+    cout<<"|      Opción         |  valor de la cuota mensual |"<<endl;
+    cout<<"----------------------+----------------------------+ "<<endl;
+    cout<<"| 5 anos [0]          |         "<<saldo/60<<"       |"<<endl;     
+    cout<<"+---------------------+----------------------------+"<<endl;
+    cout<<"| 7 anos [1]          |         "<<saldo/84<<"          |"<<endl;    
+    cout<<"+---------------------+----------------------------+"<<endl;
+    cout<<"| 10 anos [2]         |         "<<saldo/120<<"           |"<<endl;    
+    cout<<"+---------------------+----------------------------+"<<endl;
+    cin>>financiacion;
+    
+    if(financiacion == 0 || financiacion == 1 || financiacion == 2){
+        switch (financiacion)
+        {
+        case 0:
+            cuota_mensual = saldo/60;
+            break;
+        case 1: 
+            cuota_mensual = saldo/84;
+            break;
+        case 2:
+            cuota_mensual = saldo/120;
+        default:
+            break;
+        }
+    }
+    else cout<<"digite una opcion correcta"; sleep(2); exit(0);
 
-    return 0;
-	}
-	
-}
 
-else{
- 	
-cout<<"ERROR, usted ingresó un dato no valido o no cumple con los requisitos para comprar una casa con nosotros";
-}
+    //60 cuotas
+    //84 cuotas
+    //120 cuotas
+
+    }
+
+    else cout<<"ERROR, usted ingresó un dato no valido o no cumple con los requisitos para comprar una casa con nosotros"; exit(0); sleep(1); return 0;
 
 return 0;
 }
