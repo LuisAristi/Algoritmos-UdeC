@@ -2,6 +2,7 @@
 #include<locale>
 #include <math.h>
 #include <iomanip>
+#include <unistd.h>
 
 using namespace std;
 
@@ -173,6 +174,7 @@ int main()
         exit(0);
         break;
     }
+    sleep(2);
     cout << "\x1B[2J\x1B[H" <<endl;
     
     if(casa == 3 || casa == 4 ){
@@ -206,7 +208,7 @@ int main()
         }
     }
 
-    cout<<fixed<<setprecision(1)<<precio_final;
+    
     
 
 
@@ -219,3 +221,4 @@ cout<<"ERROR, usted ingresó un dato no valido o no cumple con los requisitos pa
  }
 
 }
+
