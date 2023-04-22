@@ -11,12 +11,11 @@ using namespace std;
 //variable caso, es para saber con que detalles el cliente eligio la casa
 
 float precio_final;
-int estrato, plazo, casa, tipo, precio, jardin, piscina;
-string nombre, dni;
-float cuota_inicial, cuota_mensual, ingresos;
+int estrato, plazo, casa, tipo, precio, jardin, piscina, parqueadero, dni;
+string nombre;
+float cuota_inicial, cuota_mensual, ingresos, descuento;
 
-int main()
-{
+int main(){
 	system( "Title Programa de Gestion de ventas MY HOME" ); 
 	setlocale(LC_ALL, "spanish");
 	system("Color f0");
@@ -26,17 +25,17 @@ int main()
     cin.get();
     cout << "\x1B[2J\x1B[H" <<endl;
     cout<<"Ingrese su DNI: ";
-    getline(cin, dni);
+    cin>>dni;
     cout<<endl<<"Ingrese su nombre: ";
-    getline(cin, nombre);
+    fflush(stdin); getline(cin, nombre);
     cout<<endl<<"Digite los ingresos de su circulo familiar cercano: ";
     cin>>ingresos;
     cout<<endl<<"Digite su estrato: ";
     cin>>estrato;
     cout << "\x1B[2J\x1B[H" <<endl; 
     
-    if ((ingresos >=2300000 and ingresos <=3500000) and (estrato >=1 and estrato <=3) ){
-    		cout<<"+-------+----------------+--------------+-------------------+--------------------+" <<endl;
+    if ((ingresos >=2300000 and ingresos <=3500000) and (estrato >=1 and estrato <=3) and (dni>0)){
+    cout<<"+-------+----------------+--------------+-------------------+--------------------+" <<endl;
 	cout<<"|Número |Tipo de vivienda| En obra negra| Acabados sencillos| Acabados Especiales|" <<endl;
 	cout<<"+-------+----------------+--------------+-------------------+--------------------+" <<endl;
 	cout<<"|   1   |De   un   piso  | 75.000.000   |     85.000.000    |     90.000.000     |" <<endl;
@@ -204,21 +203,93 @@ int main()
 
         }
         else{
-            cout<<"incorrecto";
+            cout<<"Incorrecto, digite una opción correcta";
+            sleep(1);
+            exit(0);
         }
-    }
+     cout << "\x1B[2J\x1B[H" <<endl;
+	  if(casa == 3 || casa == 4 ){
+        cout<<"+-------------------------------------------------+"<<endl;
+        cout<<"|      Opción        |     Suma al precio total   |"<<endl;
+        cout<<"--------------------------------------------------+ "<<endl;
+        cout<<"|    Con vista a la  |        "<<fixed<<setprecision(1)<<(precio*0.05)<<"         |"<<endl;
+        cout<<"|    piscina[1]      |                            |"<<endl;     
+        cout<<"+-------------------------------------------------+"<<endl;
+        cout<<"|    Sin vista a la  |                            |"<<endl;
+        cout<<"|    piscina[2]      |           0                |"<<endl;    
+        cout<<"+-------------------------------------------------+"<<endl;
 
-    
-    
+        cout<<"¿Desea tener vista a la piscina (1 o 2)?"<<endl;
+        cin>>piscina;   
+        
+              if (piscina == 1 || piscina == 2 ){
+            switch (piscina){
+            case 1:
+                precio_final += precio*1.05;
+                break;
+            case 2:
+            precio_final += 0;
+                break;
+            default:
+                break;
+            }
+        }
+        else{
+            cout<<"incorrecto, digite una opcion correcta";
+            sleep(1);
+            exit(0);
+        }
+      cout << "\x1B[2J\x1B[H" <<endl;
+      sleep (1);
+    }
+ 
+        cout<<"+---------------------+----------------------------+"<<endl;
+        cout<<"|      Opción         |     Suma al precio total   |"<<endl;
+        cout<<"----------------------+----------------------------+ "<<endl;
+        cout<<"| Sin parqueadero [0] |            0               |"<<endl;     
+        cout<<"+---------------------+----------------------------+"<<endl;
+        cout<<"|  Un parqueadero [1] |         3.000.000          |"<<endl;    
+        cout<<"+---------------------+----------------------------+"<<endl;
+        cout<<"| Dos parqueaderos [2]|         6.000.000          |"<<endl;    
+        cout<<"+---------------------+----------------------------+"<<endl;
+        cout<<"Elija como desea el parqueadero(0, 1 o 2): "; cin>>parqueadero;
+		
+		switch(parqueadero){
+		case 0:
+		precio_final += 0;
+        break;
+		
+		case 1:
+		precio_final += 3000000;
+        break;
+        
+        case 2:
+		precio_final += 6000000;
+        break;
+		}   
+	cuota_inicial = precio_final*0.3;	
+		 
+    if(parqueadero == 2){
+    descuento = cuota_inicial*0.1;
+	}
+    else{
+    descuento = 0;	
+	}
+	
+	cuota_inicial = cuota_inicial-descuento;
+	
+
 
 
     return 0;
 	}
 	
- else{
- 	
-cout<<"ERROR, usted ingresó un dato no valido o no cumple con los requisitos para comprar una casa con nosotros";
- }
-
 }
 
+else{
+ 	
+cout<<"ERROR, usted ingresó un dato no valido o no cumple con los requisitos para comprar una casa con nosotros";
+}
+
+return 0;
+}
