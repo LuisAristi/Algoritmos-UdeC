@@ -16,7 +16,7 @@ float cuota_inicial, cuota_mensual, ingresos;
 
 int main()
 {
-	system( "Title Programa de Gestion de ventas MY HOME" );
+	system( "Title Programa de Gestion de ventas MY HOME" ); 
 	setlocale(LC_ALL, "spanish");
 	system("Color f0");
 	cout<<"                                                                                          " <<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
@@ -93,7 +93,9 @@ int main()
             cout<<"Usted seleccionó una vivienda de un piso colindante con acabados especiales";
             break;
         default:
-            break;
+         cout<<"Tipo de acabado no valido, seleccione un valor valido"<<endl;
+            sleep(1);
+            exit(0);
         }
         break;
     case 2:
@@ -113,7 +115,9 @@ int main()
             cout<<"Usted seleccionó una vivienda de dos pisos colindante con acabados especiales"<<endl;
             break;
         default:
-            break;
+        	 cout<<"Tipo de acabado no valido, seleccione un valor valido"<<endl;
+            sleep(1);
+            exit(0);
     }
     break;
     
@@ -133,6 +137,9 @@ int main()
             cout<<"Usted seleccionó una vivienda de un piso esquinera con acabados especiales"<<endl;
             break;
         default:
+         cout<<"Tipo de acabado no valido, seleccione un valor valido"<<endl;
+            sleep(1);
+            exit(0);
             break;
         }
         break;
@@ -153,13 +160,17 @@ int main()
             cout<<"Usted seleccionó una vivienda de dos pisos esquinera con acabados especiales"<<endl;
             break;
         default:
-       	
+       		 cout<<"Tipo de acabado no valido, seleccione un valor valido"<<endl;
+            sleep(1);
+            exit(0);
             break;
         }
         break;
 
     default:
-    
+            cout<<"Tipo de casa no valida, seleccione un valor valido"<<endl;
+        sleep(1);
+        exit(0);
         break;
     }
     cout << "\x1B[2J\x1B[H" <<endl;
@@ -184,7 +195,7 @@ int main()
                 break;
             case 2:
                 precio_final = precio*1.10;
-		break;
+                break;
             default:
                 break;
             }
