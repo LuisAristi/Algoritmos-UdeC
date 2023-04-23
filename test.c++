@@ -48,11 +48,9 @@ int main(){
 	cout<<"+-------+----------------+--------------+-------------------+--------------------+" <<endl;	
 	cout<<"|   4   |De   dos   pisos| 90.000.000   |     100.000.000   |     105.000.000    |" <<endl;
 	cout<<"|       |Esquinera       |              |                   |                    |" <<endl;
-	cout<<"+-------+----------------+--------------+-------------------+--------------------+" <<endl;
-	
+	cout<<"+-------+----------------+--------------+-------------------+--------------------+" <<endl <<endl;
     cout<<"Para seleccionar las caracteristicas de su casa digite el número que corresponde en la tabla a la caracteristica que se pide" <<endl;
     cout<<"Seleccione que tipo de casa quiere: "; cin>>casa;
-
     cout << "\x1B[2J\x1B[H" <<endl;
 
     cout<<"+----------------+--------------+-------------------+--------------------+" <<endl;
@@ -75,11 +73,12 @@ int main(){
     cout<<"Para seleccionar las caracteristicas de su casa digite el número que corresponde en la tabla a la caracteristica que se pide" <<endl;
     cout<<"Seleccione el tipo de acabado que desee: "; cin>>tipo;
     cout << "\x1B[2J\x1B[H" <<endl;
+    
     switch (casa){
     case 1:
         casa_tipo = "De un piso colindante";
         switch (tipo)
-        {
+		{
         case 1:
             precio_final = 75000000;
             cout<<"Usted seleccionó una vivienda de un piso colindante en obra negra";
@@ -119,7 +118,7 @@ int main(){
         	 cout<<"Tipo de acabado no valido, seleccione un valor valido"<<endl;
             sleep(1);
             exit(0);
-    }
+        }
     break;
     
     case 3:
@@ -144,7 +143,7 @@ int main(){
             exit(0);
             break;
         }
-        break;
+    break;
         
     case 4:
         casa_tipo = "De dos pisos esquinera";
@@ -168,7 +167,7 @@ int main(){
             exit(0);
             break;
         }
-        break;
+    break;
 
     default:
             cout<<"Tipo de casa no valida, seleccione un valor valido"<<endl;
@@ -189,12 +188,10 @@ int main(){
     default:
         break;
     }
-
     sleep(2);
     cout << "\x1B[2J\x1B[H" <<endl;
     
     if(casa == 3 || casa == 4 ){
-        
         cout<<"+-------------------------------------------------+"<<endl;
         cout<<"| Tipo de jardin     |    Suma al precio total    |"<<endl;
         cout<<"--------------------------------------------------+ "<<endl;
@@ -219,7 +216,6 @@ int main(){
             default:
                 break;
             }
-
         }
         else{
             cout<<"Incorrecto, digite una opción correcta";
@@ -236,7 +232,6 @@ int main(){
         cout<<"|    Sin vista a la  |                            |"<<endl;
         cout<<"|    piscina[2]      |           0                |"<<endl;    
         cout<<"+-------------------------------------------------+"<<endl;
-
         cout<<"¿Desea tener vista a la piscina (1 o 2)?"<<endl;
         cin>>piscina;   
         
@@ -253,14 +248,13 @@ int main(){
                 default:
                     break;
                     }
-            }
+        }
         else{
             cout<<"Incorrecto, digite una opcion correcta";
             sleep(1);
             exit(0);
         }
-      cout << "\x1B[2J\x1B[H" <<endl;
-      sleep (1);
+    cout << "\x1B[2J\x1B[H" <<endl;
     }
     
     else{
@@ -295,8 +289,7 @@ int main(){
         precio_final += 6000000;
         break;
 		}   
-  
-	cuota_inicial = precio_final*0.3;
+		cuota_inicial = precio_final*0.3;
 	
 	 if(parqueadero == 2){
   	descuento = cuota_inicial*0.1;
@@ -379,14 +372,10 @@ int main(){
     cout<<"|Cantidad de cuotas   |     "<<cant_cuotas<< " cuotas mensuales   |"<<endl;
     cout<<"| mensuales           |                            |"<<endl;
     cout<<"+---------------------+----------------------------+ "<<endl;
-    
-
-
     }
-
+    
     else {
     cout<<"ERROR, usted ingresó un dato no valido o no cumple con los requisitos para comprar una casa con nosotros"; exit(0); sleep(1); return 0;
 	}
-
 return 0;
 }
