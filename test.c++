@@ -9,7 +9,6 @@ using namespace std;
 //declaracion de variables
 // variable casa es para almacenar la opcion que ingreso el usuario
 //variable caso, es para saber con que detalles el cliente eligio la casa
-
 int estrato, plazo, casa, tipo, precio, jardin, piscina, parqueadero, dni, financiacion, cant_cuotas;
 string nombre = "  ", casa_tipo, acabado, jardin_op, piscina_op, parqueadero_op;
 float precio_final, saldo, cuota_inicial, cuota_mensual, ingresos, descuento;
