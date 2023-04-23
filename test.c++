@@ -293,7 +293,7 @@ int main(){
       }
    	
     cuota_inicial = cuota_inicial-descuento; //Se le resta el descuento a la cuota inicial y se almacena
-    saldo = precio_final - cuota_inicial; //El saldo es lo que queda por pagar despues de la cuota inicial, entonces el precio final de la casa con todos los adicionales se resta con la cuota inicial
+    saldo = precio_final - cuota_inicial - descuento ; //El saldo es lo que queda por pagar despues de la cuota inicial, entonces el precio final de la casa con todos los adicionales se resta con la cuota inicial y el descuento 
 	
 	cout << "\x1B[2J\x1B[H" <<endl; 
 	cout<<"+---------------------+----------------------------+"<<endl;
