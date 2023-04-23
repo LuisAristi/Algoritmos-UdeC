@@ -1,3 +1,4 @@
+//Trabajo de Luis Aristizabal y Juan Polo
 #include<iostream>
 #include<locale>
 #include <iomanip>
@@ -5,9 +6,8 @@
 
 using namespace std;
 
-//declaracion de variables
-// variable casa es para almacenar la opcion que ingreso el usuario
-//variable caso, es para saber con que detalles el cliente eligio la casa
+//Declaracion de variables
+//Aqui es donde se almacenaran las variables que nos permitiran resolver el problema 
 
 float precio_final;
 int estrato, casa, tipo, precio, adiciones, dni;
@@ -32,7 +32,10 @@ int main(){
     cout<<endl<<"Digite su estrato: ";
     cin>>estrato;
     cout << "\x1B[2J\x1B[H" <<endl; 
-    
+
+    //El problema plantea que el usuario debe cumplir ciertos requisitos en base a su ingreso y estrato, sino los cumple no puede realizar la compra, entonces este if lo usamos para eso
+    //El dni es un numero que siempre es mayor a 0, si se ingresa un numero menor o igual a 0 sería un dato invalido
+    //Si alguna condición no se cumple el pograma lo dira y se saldra
     if ((ingresos >=2300000 and ingresos <=3500000) and (estrato >=1 and estrato <=3) and (dni>0)){
     cout<<"+-------+----------------+--------------+-------------------+--------------------+" <<endl;
 	cout<<"|Número |Tipo de vivienda| En obra negra| Acabados sencillos| Acabados Especiales|" <<endl;
@@ -72,10 +75,12 @@ int main(){
     cout<<"Para seleccionar las caracteristicas de su casa digite el número que corresponde en la tabla a la caracteristica que se pide" <<endl;
     cout<<"Seleccione el tipo de acabado que desee: "; cin>>tipo;
     cout << "\x1B[2J\x1B[H" <<endl;
+    
+    //Este switch evalua el tipo de casa que eligió el usuario, dependiendo de cual elija se activará el caso correspondiente
     switch (casa){
     case 1:
-        casa_tipo = "De un piso colindante";
-        switch (tipo){
+        casa_tipo = "De un piso colindante"; //Se almacena en la variable casa_tipo la cual es string para mostrarsela al usuario al final del programa
+        switch (tipo){ //Este switch evalua el tipo de acabado que eligió el usuario, dependiendo de cual eligió se afectará la variable precio_final y mostrara un mensaje que dice cual casa y acabado seleccionó      
         case 1:
             precio_final = 75000000;
             cout<<"Usted seleccionó una vivienda de un piso colindante en obra negra";
@@ -88,10 +93,10 @@ int main(){
             precio_final = 90000000;
             cout<<"Usted seleccionó una vivienda de un piso colindante con acabados especiales";
             break;
-        default:
-         cout<<"Tipo de acabado no valido, seleccione un valor valido"<<endl;
+        default: //El caso default ocurrirá cuando el usuario digite una opcion diferente las que se les pide, ocasionando un error, entonces se le avisará al usuario y se cerrará el programa
+            cout<<"Tipo de acabado no valido, seleccione un valor valido"<<endl;
             sleep(1); exit(0);}
-        break;
+            break;
     case 2:
         casa_tipo = "De dos pisos colindante";
         switch (tipo){
@@ -152,6 +157,7 @@ int main(){
     default:
         cout<<"Tipo de casa no valida, seleccione un valor valido"<<endl; sleep(1); exit(0);
         break;}
+    //este switch permite saber el tipo de acabado elegido por el usuario para luego almacenar en la variable acabado que acabado eligio
     switch (tipo){
     case 1:
         acabado = "obra negra";
