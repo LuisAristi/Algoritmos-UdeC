@@ -82,15 +82,15 @@ int main(){
         switch (tipo)
         {
         case 1:
-            precio = 75000000;
+            precio_final = 75000000;
             cout<<"Usted seleccionó una vivienda de un piso colindante en obra negra";
             break;
         case 2:
-            precio = 85000000;
+            precio_final = 85000000;
             cout<<"Usted seleccionó una vivienda de un piso colindante con acabados sencillos";
             break;
         case 3:
-            precio = 90000000;
+            precio_final = 90000000;
             cout<<"Usted seleccionó una vivienda de un piso colindante con acabados especiales";
             break;
         default:
@@ -104,16 +104,16 @@ int main(){
         switch (tipo)
         {
         case 1:
-            precio = 85000000;
+            precio_final = 85000000;
             cout<<"Usted seleccionó una vivienda de dos pisos colindante en obra negra" <<endl;
             break;
         case 2:
-            precio = 95000000;
+            precio_final = 95000000;
             cout<<"Usted seleccionó una vivienda de dos pisos colindante con acabados sencillos"<<endl;
             break;
             
         case 3:
-            precio = 100000000;
+            precio_final = 100000000;
             cout<<"Usted seleccionó una vivienda de dos pisos colindante con acabados especiales"<<endl;
             break;
         default:
