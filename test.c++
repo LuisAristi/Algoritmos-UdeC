@@ -219,23 +219,23 @@ int main(){
 	switch(adiciones){
 	    case 0:
             parqueadero_op = "sin parqueadero"; 
-            cuota_inicial = precio_final*0.3;
             break;
 	    case 1:
             parqueadero_op = "un parqueadero"; 
             precio_final += 3000000; 
-            cuota_inicial = precio_final*0.3;
             break;
         case 2:
             parqueadero_op = "dos parqueaderos"; 
             precio_final += 6000000; 
             cuota_inicial = precio_final*0.3; 
-            cuota_inicial = cuota_inicial*0.9;
+            descuento = cuota_inicial*0.1;
             break; 
         default:
             cout<<"incorrecto, digite una opcion correcta"; sleep(1); exit(0);
             break;
 	}   
+    saldo = precio_final - cuota_inicial;
+    cuota_inicial = cuota_inicial - descuento;
     cout << "\x1B[2J\x1B[H" <<endl; 
 	cout<<"+---------------------+----------------------------+"<<endl;
     cout<<"|      Opción         |  Valor de la cuota mensual |"<<endl;
