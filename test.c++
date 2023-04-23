@@ -10,10 +10,9 @@ using namespace std;
 // variable casa es para almacenar la opcion que ingreso el usuario
 //variable caso, es para saber con que detalles el cliente eligio la casa
 
-float precio_final;
-int estrato, plazo, casa, tipo, precio, jardin, piscina, parqueadero, dni, financiacion;
+int estrato, plazo, casa, tipo, precio, jardin, piscina, parqueadero, dni, financiacion, cant_cuotas;
 string nombre = "  ", casa_tipo, acabado, jardin_op, piscina_op, parqueadero_op;
-float saldo, cuota_inicial, cuota_mensual, ingresos, descuento = 0;
+float precio_final, saldo, cuota_inicial, cuota_mensual, ingresos, descuento;
 
 int main(){
 	system( "Title Programa de Gestion de ventas MY HOME" ); 
@@ -179,19 +178,19 @@ int main(){
     }
     switch (tipo){
     case 1:
-        acabado = "obra negra";
+        acabado = "Obra negra";
         break;
     case 2:
-        acabado = "acabados simples";
+        acabado = "Acabados sencillos";
         break;
     case 3:
-        acabado = "acabados especiales";
+        acabado = "Acabados especiales";
         break;
     default:
         break;
     }
 
-    sleep(3);
+    sleep(2);
     cout << "\x1B[2J\x1B[H" <<endl;
     
     if(casa == 3 || casa == 4 ){
@@ -210,11 +209,11 @@ int main(){
             switch (jardin)
             {
             case 1:
-                jardin_op = "jardin grande";
+                jardin_op = "Jardin grande";
                 precio_final = precio*1.15;
                 break;
             case 2:
-                jardin_op = "jardin pequeno";
+                jardin_op = "Jardin pequeño";
                 precio_final = precio*1.10;
                 break;
             default:
@@ -244,11 +243,11 @@ int main(){
         if (piscina == 1 || piscina == 2 ){
             switch (piscina){
                 case 1:
-                    piscina_op = "con vista a la piscina";
+                    piscina_op = "Con vista a la piscina";
                     precio_final += precio*0.05;
                     break;
                 case 2:
-                    piscina_op = "sin vista a la piscina";
+                    piscina_op = "Sin vista a la piscina";
                     precio_final += 0;
                     break;
                 default:
@@ -256,14 +255,18 @@ int main(){
                     }
             }
         else{
-            cout<<"incorrecto, digite una opcion correcta";
+            cout<<"Incorrecto, digite una opcion correcta";
             sleep(1);
             exit(0);
         }
       cout << "\x1B[2J\x1B[H" <<endl;
-      cout<<precio_final;
       sleep (1);
     }
+    
+    else{
+    jardin_op = "No aplica";
+    piscina_op = "No aplica";	
+	}
  
         cout<<"+---------------------+----------------------------+"<<endl;
         cout<<"|      Opción         |     Suma al precio total   |"<<endl;
@@ -278,38 +281,44 @@ int main(){
 		
 		switch(parqueadero){
 		case 0:
-        parqueadero_op = "sin parqueadero";
+        parqueadero_op = "Sin parqueadero";
 		precio_final += 0;
         break;
 		
 		case 1:
-        parqueadero_op = "un parqueadero";
+        parqueadero_op = "Un parqueadero";
 		precio_final += 3000000;
         break;
         
         case 2:
-        parqueadero_op = "dos parqueaderos";
-		precio_final += 6000000;
-        cuota_inicial = precio_final*0.3;
-        descuento = cuota_inicial*0.1;
+        parqueadero_op = "Dos parqueaderos";
+        precio_final += 6000000;
         break;
 		}   
-
-	cuota_inicial = precio_final*0.3;	
-	saldo = precio_final - cuota_inicial;
+  
+	cuota_inicial = precio_final*0.3;
+	
+	 if(parqueadero == 2){
+  	descuento = cuota_inicial*0.1;
+  }
+   else{
+   descuento = 0;	
+   }
+   	
     cuota_inicial = cuota_inicial-descuento;
-
-
-    cout<<"+---------------------+----------------------------+"<<endl;
-    cout<<"|      Opción         |  valor de la cuota mensual |"<<endl;
+    saldo = precio_final - cuota_inicial;
+	
+	cout << "\x1B[2J\x1B[H" <<endl; 
+	cout<<"+---------------------+----------------------------+"<<endl;
+    cout<<"|      Opción         |  Valor de la cuota mensual |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"| 5 anos [0]          |         "<<saldo/60<<"       |"<<endl;     
+    cout<<"| 5 años [0]          |         "<<fixed<<setprecision(1)<<saldo/60<<"       |"<<endl;     
     cout<<"+---------------------+----------------------------+"<<endl;
-    cout<<"| 7 anos [1]          |         "<<saldo/84<<"          |"<<endl;    
+    cout<<"| 7 años [1]          |         "<<fixed<<setprecision(1)<<saldo/84<<"          |"<<endl;    
     cout<<"+---------------------+----------------------------+"<<endl;
-    cout<<"| 10 anos [2]         |         "<<saldo/120<<"           |"<<endl;    
+    cout<<"| 10 años [2]         |         "<<fixed<<setprecision(1)<<saldo/120<<"           |"<<endl;    
     cout<<"+---------------------+----------------------------+"<<endl;
-    cout<<"seleccione como quiere que sea el plazo (0, 1 o 2)";
+    cout<<"Seleccione como quiere que sea el plazo (0, 1 o 2): ";
     cin>>financiacion;
     
     if(financiacion == 0 || financiacion == 1 || financiacion == 2){
@@ -317,56 +326,67 @@ int main(){
         case 0:
             plazo = 5;
             cuota_mensual = saldo/60;
+            cant_cuotas = 60;
             break;
         case 1: 
             plazo = 7;
             cuota_mensual = saldo/84;
+            cant_cuotas = 84;
             break;
         case 2:
             plazo = 10;
             cuota_mensual = saldo/120;
+            cant_cuotas = 120;
         default:
             break;
         }
     }
     else{
-        cout<<"digite una opcion correcta"; 
+        cout<<"ERROR, digite una opcion correcta"; 
         sleep(2); 
         exit(0);
         }
     cout << "\x1B[2J\x1B[H" <<endl; 
     cout<<"+---------------------+----------------------------+"<<endl;
-    cout<<"|   nombre cliente    |    "<<nombre<<"          |"<<endl;
+    cout<<"| Nombre  del cliente |    "<<nombre<<"          |"<<endl;
     cout<<"+---------------------+----------------------------+"<<endl;
-    cout<<"|documentode identidad|      "<<dni<<"           |"<<endl;
+    cout<<"|Documento de identidad|      "<<dni<<"           |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"|      ingresos       |    "<<ingresos<<"       |"<<endl;
+    cout<<"|      Estrato        |          "<<estrato<<"                 |"<<endl;
+    cout<<"----------------------+----------------------------+" <<endl;
+    cout<<"|      Ingresos       |    "<<fixed<<setprecision(1)<<ingresos<<"       |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"|   casa a comprar    |   "<<casa_tipo<<" |"<<endl;
+    cout<<"|   Casa a comprar    |   "<<casa_tipo<<" |"<<endl;
     cout<<"+---------------------+----------------------------+"<<endl;
-    cout<<"|      acabados       |  "<<acabado<<"  |"<<endl;
+    cout<<"|      Acabados       |  "<<acabado<<"        |"<<endl;
     cout<<"+---------------------+----------------------------+"<<endl;
-    cout<<"|      jardin         |   "<<jardin_op<<"        |"<<endl;
+    cout<<"|      Jardin         |   "<<jardin_op<<"        |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"| vista a la piscina  |    "<<piscina_op<< " |"<<endl;
+    cout<<"| Vista a la piscina  |    "<<piscina_op<< "  |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"|     parqueadero     |    "<<parqueadero_op<<" |"<<endl;
+    cout<<"|     Parqueadero     |    "<<parqueadero_op<<"      |"<<endl;
+    cout<<"----------------------+----------------------------+ "<<endl; 
+    cout<<"|   Precio de venta   |       "      <<fixed<<setprecision(1)<<precio_final<<  "          |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"|   precio de venta   | "<<precio_final<<  "|"<<endl;
+    cout<<"|    Cuota inicial    |       "     <<fixed<<setprecision(1)<<cuota_inicial<< "           |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"|    cuota inicial    | "<<cuota_inicial<< " |"<<endl;
+    cout<<"|        Saldo        |    "    <<fixed<<setprecision(1)<<saldo<< "         |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"|        saldo        | "<<saldo<< " |"<<endl;
+    cout<<"|    Cuota mensual    |      "<<fixed<<setprecision(1)<<cuota_mensual<< "             |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"|    cuota mensual    | "<<cuota_mensual<< " |"<<endl;
+    cout<<"|        Plazo        |           "<<plazo<< " años           |"<<endl;
     cout<<"----------------------+----------------------------+ "<<endl;
-    cout<<"|        plazo        | "<<plazo<< " anos|"<<endl;
-    cout<<"----------------------+----------------------------+ "<<endl;
+    cout<<"|Cantidad de cuotas   |     "<<cant_cuotas<< " cuotas mensuales   |"<<endl;
+    cout<<"| mensuales           |                            |"<<endl;
+    cout<<"+---------------------+----------------------------+ "<<endl;
+    
 
 
     }
 
-    else cout<<"ERROR, usted ingresó un dato no valido o no cumple con los requisitos para comprar una casa con nosotros"; exit(0); sleep(1); return 0;
+    else {
+    cout<<"ERROR, usted ingresó un dato no valido o no cumple con los requisitos para comprar una casa con nosotros"; exit(0); sleep(1); return 0;
+	}
 
 return 0;
 }
