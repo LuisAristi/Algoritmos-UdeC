@@ -182,10 +182,10 @@ int main(){
         cout<<"Elija que jardin quiere: "; cin>>adiciones;
         switch (adiciones){
             case 1:
-                jardin_op = "jardin grande"; precio_final = precio*0.15;
+                jardin_op = "jardin grande"; precio_final = precio*1.15;
                 break;
             case 2:
-                jardin_op = "jardin pequeno"; precio_final = precio*0.10;
+                jardin_op = "jardin pequeno"; precio_final = precio*1.10;
                 break;
             default:
                 cout<<"incorrecto, digite una opcion correcta"; sleep(1); exit(0);
